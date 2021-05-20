@@ -1,0 +1,126 @@
+/* for .container-1 */
+.topic-container {
+  position: absolute;
+  top: 15rem;
+  left: 5rem;
+  width: fit-content;
+  height: fit-content;
+  transition: 0.3s ease-in-out;
+  animation: headentry 1s ease forwards;
+}
+
+@keyframes headentry {
+  from {
+    opacity: 0;
+    left: -20rem;
+  }
+  to {
+    opacity: 1;
+    left: 5rem;
+  }
+}
+
+.topic-container::after {
+  content: "";
+  width: 10px;
+  height: 70%;
+  background: linear-gradient(to bottom, #000046, #1cb5e0);
+  position: absolute;
+  left: -40px;
+  top: 0.2rem;
+}
+
+.topic-container .heading-main h1 {
+  z-index: 99999;
+  font-size: 5vw;
+  margin-bottom: 20px;
+  animation: headentry 1s ease-in-out forwards;
+}
+
+.topic-container .heading-sub p {
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  animation: headentry 1s ease-in-out forwards;
+}
+
+@media screen and (max-width: 910px) {
+  .topic-container {
+    position: absolute;
+    max-width: 80%;
+  }
+  .topic-container .heading-main h1 {
+    font-size: 50px;
+    display: inline;
+    z-index: 0;
+  }
+
+  .topic-container .heading-sub p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .topic-container {
+    position: relative;
+    top: 10rem;
+    left: -10rem;
+  }
+  .topic-container .heading-main h1 {
+    font-size: 32px;
+    font-weight: 900;
+    display: inline;
+    z-index: 99999;
+  }
+  .topic-container .heading-sub p {
+    font-size: 18px;
+  }
+}
+
+/* .topic-container .button-container {
+  margin-top: 50px;
+} */
+
+:root {
+  --base-color: rgba(255, 255, 255, 1);
+  --hover-color: #1cb5e0;
+}
+.horizontal {
+  position: relative;
+  border: 2px solid var(--base-color);
+  /* border-radius: 20px  ; */
+  font-size: 1.5rem;
+  padding: 2px 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.horizontal > .text {
+  position: relative;
+  color: transparent;
+  background-image: linear-gradient(90deg, var(--hover-color) 0%, var(--hover-color) 50%, var(--base-color) 50%, var(--base-color) 100%);
+  background-repeat: repeat;
+  background-size: 200%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-position 300ms;
+}
+.horizontal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--base-color);
+  transform-origin: 100% 0;
+  transform: scale3d(0, 1, 1);
+  transition: transform 300ms;
+}
+.horizontal:hover .text {
+  background-position: 0 0;
+}
+.horizontal:hover::before {
+  transform-origin: 0 0;
+  transform: scale3d(1, 1, 1);
+}
